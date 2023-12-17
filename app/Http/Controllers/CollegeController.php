@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 use App\Models\College;
+use Illuminate\Support\Facades\Auth;
 
 class CollegeController extends Controller
 {
@@ -15,6 +16,7 @@ class CollegeController extends Controller
      */
     public function index(): View
     {
+
         $colleges = College::all();
         return view('pages.colleges', ['colleges' => $colleges]);
     }

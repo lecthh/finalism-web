@@ -20,11 +20,13 @@ use App\Http\Controllers\CollegeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
-Route::resource('/colleges', CollegeController::class);
-Route::resource('/departments', DeparmentController::class);
-Route::resource('/programs', ProgramController::class);
-Route::resource('/students', StudentController::class);
+Auth::routes();
+
+Route::resource('colleges', CollegeController::class);
+Route::resource('departments', DeparmentController::class);
+Route::resource('programs', ProgramController::class);
+Route::resource('students', StudentController::class);
 
