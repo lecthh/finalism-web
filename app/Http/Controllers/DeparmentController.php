@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
 use App\Models\Department;
+use App\Models\College;
 
 class DeparmentController extends Controller
 {
@@ -16,16 +15,20 @@ class DeparmentController extends Controller
     public function index(): View
     {
         $departments = Department::all();
-        return view('pages.departments', ['departments' => $departments]);
+        $colleges = College::all();
+        return view('pages.departments', [
+            'departments' => $departments,
+            'colleges' => $colleges
+        ]);
     }
 
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('/departments');
     }
 
     /**
@@ -33,7 +36,15 @@ class DeparmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'deptfullname' => 'required',
+            'deptshortname' => 'required',
+            'deptcollid' => 'required'
+        ]);
+
+        Department::create($validateData);
+
+        return redirect('/departments')->with('success', 'Department created successfully!');
     }
 
     /**

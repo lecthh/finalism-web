@@ -57,7 +57,7 @@
                                 {{ $item->deptshortname }}
                             </td>
                             <td class="px-5 py-4 text-black">
-                                {{ $item->deptcollid }}
+                                {{ $item->college->collfullname }}
                             </td>
                             <td class="px-5 py-4 text-black">
                                 <div class="group-hover/edit-delete:visible invisible flex gap-x-2">
