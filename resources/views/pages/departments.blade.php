@@ -46,6 +46,8 @@
                 </thead>
                 <tbody>
                     @foreach($departments as $item)
+                    @include('modals.department.edit_department', ['departmentId' => $item->deptid, 'departmentName' => $item->deptfullname, 'departmentAbbr' => $item->deptshortname, 'departmentCollege' => $item->deptcollid])
+                    @include('modals.department.delete_department', ['departmentId' => $item->deptid, 'departmentName' => $item->deptfullname, 'departmentAbbr' => $item->deptshortname, 'departmentCollege' => $item->deptcollid])
                         <tr class="bg-white border-b hover:bg-purple-100 group/edit-delete">
                             <th scope="row" class="px-6 py-4 font-bold text-[#9D59EF] whitespace-nowrap">
                                 {{ $item->deptid }}
@@ -57,17 +59,17 @@
                                 {{ $item->deptshortname }}
                             </td>
                             <td class="px-5 py-4 text-black">
-                                {{ $item->college->collfullname }}
+                                {{ $item->colleges->collfullname }}
                             </td>
                             <td class="px-5 py-4 text-black">
                                 <div class="group-hover/edit-delete:visible invisible flex gap-x-2">
-                                    <button class="bg-[#9D59EF] px-5 py-1 text-white edit-department-btn" data-modal-target="edit-college" data-modal-toggle="edit-college"data-college-id="{{ $item->collid }}"data-college-name="{{ $item->collfullname }}" data-college-abbreviation="{{ $item->collshortname }}">
+                                    <button class="bg-[#9D59EF] px-5 py-1 text-white edit-department-btn" data-modal-target="edit-department" data-modal-toggle="edit-department"data-department-id="{{ $item->deptid }}"data-department-name="{{ $item->deptfullname }}" data-department-abbreviation="{{ $item->deptshortname }}">
                                         Edit
                                     </button>
-                                    <form action="{{ url('/departments' . '/' . $item->collid) }}" method="POST">
+                                    <form action="{{ url('/departments' . '/' . $item->deptid) }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }} 
-                                        <button type="submit" class="bg-[#FF0B47] px-5 py-1 text-white" name="delete-college"  onclick="return confirm('Confirm Delete?')">
+                                        <button type="submit" class="bg-[#FF0B47] px-5 py-1 text-white" name="delete-department"  onclick="return confirm('Confirm Delete?')">
                                             Delete
                                         </button>
                                     </form> 

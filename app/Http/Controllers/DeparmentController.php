@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Department;
@@ -74,8 +75,9 @@ class DeparmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Department $department)
+    public function destroy(Department $id): RedirectResponse
     {
-        //
+        Department::destroy($id);
+        return redirect('/departments')->with('flash_message', 'Department Deleted!'); 
     }
 }
