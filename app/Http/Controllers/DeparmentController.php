@@ -75,7 +75,7 @@ class DeparmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Department $id): RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
         Department::destroy($id);
         return redirect('/departments')->with('flash_message', 'Department Deleted!'); 
