@@ -81,8 +81,9 @@ class ProgramController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Program $program)
+    public function destroy(string $id): RedirectResponse
     {
-        //
+        Program::destroy($id);
+        return redirect('/programs')->with('flash_message', 'College Deleted!'); 
     }
 }

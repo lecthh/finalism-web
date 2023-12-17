@@ -60,7 +60,7 @@
                                 {{ $item->progshortname }}
                             </td>
                             <td class="px-5 py-4 text-black">
-                                {{ $item->progcollid }}
+                                {{ $item->colleges->collfullname }}
                             </td>
                             <td class="px-5 py-4 text-black">
                                 {{ $item->progcolldeptid }}
