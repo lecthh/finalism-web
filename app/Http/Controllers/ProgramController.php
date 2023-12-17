@@ -73,9 +73,12 @@ class ProgramController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Program $program)
+    public function update(Request $request, string $id): RedirectResponse
     {
-        //
+        $programs = Program::find($id);
+        $input = $request->all();
+        $programs->update($input);
+        return redirect('/programs')->with('success', 'College Updated!');  
     }
 
     /**
