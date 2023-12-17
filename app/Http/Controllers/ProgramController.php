@@ -31,9 +31,9 @@ class ProgramController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        
+        return view('/programs');   
     }
 
     /**
@@ -41,9 +41,16 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validatedData = $request->validate([
+            'progfullname' => 'required',
+            'progshortname' => 'required',
+        ]);
 
+        Program::create($validatedData);
+
+        return redirect('/programs')->with('success', 'Program created successfully!');
+    }
+ 
     /**
      * Display the specified resource.
      */
