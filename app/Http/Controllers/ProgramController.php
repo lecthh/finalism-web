@@ -44,6 +44,9 @@ class ProgramController extends Controller
         $validatedData = $request->validate([
             'progfullname' => 'required',
             'progshortname' => 'required',
+            'progcollid' => 'required',
+            'progcolldeptid' => 'required'
+
         ]);
 
         Program::create($validatedData);

@@ -73,19 +73,9 @@
                                     <button type="submit" class="bg-[#FF0B47] px-5 py-1 text-white delete-program-btn" data-modal-target="delete-program-{{$item->progid}}" data-modal-toggle="delete-program-{{$item->progid}}" data-program-id="{{ $item->progid }}" >
                                         Delete
                                     </button>
-                                    <!-- <form action="{{ url('/program' . '/' . $item->progid) }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }} 
-                                        <button type="submit" class="bg-[#FF0B47] px-5 py-1 text-white" name="delete-program"  onclick="return confirm('Confirm Delete?')">
-                                            Delete
-                                        </button>
-                                    </form>  -->
                                 </div>
                             </td>
                         </tr>
-                    <!-- edit modal-->
-                    <!-- @include('modals.program.edit_program')
-                    @include('modals.program.delete_program') -->
                     @endforeach
                 </tbody>
             </table>

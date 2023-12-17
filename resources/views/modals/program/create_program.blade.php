@@ -23,7 +23,7 @@
 
                         <select name="progcollid" id="progcollid" class="bg-white whitespace-nowrap text-ellipsis border border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7] ">
                             @foreach($colleges as $item)
-                                <option value="{{ $item->collid }}" data-departments="{{ json_encode($item->departments) }}">
+                                <option value="{{ $item->collid }}" data-departments="{{ json_encode($item->departments) }}" >
                                     {{ $item->collfullname }}
                                 </option>
                             @endforeach
