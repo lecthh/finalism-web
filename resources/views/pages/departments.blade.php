@@ -75,7 +75,6 @@
                             </td>
                         </tr>
                         <!-- edit modal-->
-                        @include('modals.edit_department')
                     @endforeach
                 </tbody>
             </table>

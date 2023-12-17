@@ -23,7 +23,7 @@
 
                         <select name="progcollid" id="progcollid" class="bg-white whitespace-nowrap text-ellipsis border border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7] ">
                             @foreach($colleges as $item)
-                                <option value="{{ $item->collid }}">
+                                <option value="{{ $item->collid }}" data-departments="{{ json_encode($item->departments) }}">
                                     {{ $item->collfullname }}
                                 </option>
                             @endforeach
@@ -34,11 +34,6 @@
                 <div class="flex flex-col flex-grow gap-y-3">
                         <h1 class="font-medium text-[#09050F]">Department</h1>
                         <select name="progcolldeptid" id="progcolldeptid" class="bg-white whitespace-nowrap text-ellipsis border border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7]">
-                            @foreach($departments as $item)
-                                <option class="hover:bg-purple-50 text-[#09050F]" value="{{ $item->deptid }}">
-                                    {{ $item->deptfullname }}
-                                </option>
-                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -61,3 +56,23 @@
         </div>
     </form>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const collegeSelect = document.getElementById('progcollid');
+        const departmentSelect = document.getElementById('progcolldeptid');
+
+        collegeSelect.addEventListener('change', function () {
+            const selectedCollegeOption = collegeSelect.options[collegeSelect.selectedIndex];
+            const departments = JSON.parse(selectedCollegeOption.getAttribute('data-departments'));
+
+            departmentSelect.innerHTML = '';
+
+            departments.forEach(department => {
+                const option = document.createElement('option');
+                option.value = department.deptid;
+                option.text = department.deptfullname;
+                departmentSelect.appendChild(option);
+            });
+        });
+    });
+</script>

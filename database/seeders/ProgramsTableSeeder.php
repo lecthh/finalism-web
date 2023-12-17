@@ -18,6 +18,8 @@ class ProgramsTableSeeder extends Seeder
         // Truncate the programs table
         DB::table('programs')->truncate();
 
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+
         $programs = [
             ['progid' => 1001, 'progfullname' => 'Bachelor of Science in Accountancy', 'progshortname' => 'BSA', 'progcollid' => 1, 'progcolldeptid' => 1001],
             ['progid' => 1002, 'progfullname' => 'Bachelor of Science in Management Accounting', 'progshortname' => 'BSMA', 'progcollid' => 1, 'progcolldeptid' => 1001],
@@ -67,8 +69,6 @@ class ProgramsTableSeeder extends Seeder
         foreach ($programs as $program) {
             DB::table('programs')->updateOrInsert(['progid' => $program['progid']], $program);
         }
-        
-        DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 }
 //php artisan db:seed --class=ProgramsTableSeeder
