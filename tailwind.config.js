@@ -16,6 +16,9 @@ export default {
 
     theme: {
         extend: {},
+        colors:{
+            'primary-color': '#09050F',
+        }
     },
 
     plugins: [forms, typography],

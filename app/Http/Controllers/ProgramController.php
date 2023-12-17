@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\View\View;
 use App\Models\Program;
 use App\Models\College;
+use App\Models\Department;
 
 class ProgramController extends Controller
 {
@@ -18,9 +19,15 @@ class ProgramController extends Controller
     {
         $programs = Program::all();
         $colleges = College::all();
-        return view('pages.programs', ['programs' => $programs],['colleges' => $colleges]);
+        $departments = Department::all();
+        
+        return view('pages.programs', [
+            'programs' => $programs,
+            'colleges' => $colleges,
+            'departments' => $departments,
+        ]);
     }
-
+   
     /**
      * Show the form for creating a new resource.
      */

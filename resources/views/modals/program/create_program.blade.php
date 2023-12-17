@@ -3,11 +3,11 @@
         @csrf
         <div class="w-[700] bg-white flex flex-col gap-y-6 p-6">
             <div class="flex">
-                <h1 class="text-black font-bold text-2xl">Add Program</h1>
+                <h1 class="text-[#09050F] font-bold text-2xl">Add Program</h1>
             </div>
             
             <div class="flex flex-col gap-y-3">
-                <h1 class="font-medium ">Program Name</h1>
+                <h1 class="font-medium text-[#09050F]">Program Name</h1>
                 <ul class="flex gap-x-3">
                     <li>
                         <input type="text" name="progfullname" class="border flex flex-grow border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7]" placeholder="Bachelor of ..." required>
@@ -19,9 +19,9 @@
 
                 <div class="flex gap-x-3">
                     <div class="flex flex-col flex-grow gap-y-3">
-                        <h1 class="font-medium">College</h1>
+                        <h1 class="font-medium text-[#09050F]">College</h1>
 
-                        <select name="progcollid" id="progcollid" class="border border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7]">
+                        <select name="progcollid" id="progcollid" class="bg-white whitespace-nowrap text-ellipsis border border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7] ">
                             @foreach($colleges as $item)
                                 <option value="{{ $item->collid }}">
                                     {{ $item->collfullname }}
@@ -29,29 +29,18 @@
                             @endforeach
                         </select>
                         </div>
-                    <style>
-                        #collegeSelect {
-                            width: 435px;
-                            overflow: hidden;
-                            white-space: nowrap;
-                            text-overflow: ellipsis;
-                        }
-                    </style>
                 </div>
 
                 <div class="flex flex-col flex-grow gap-y-3">
-                        <h1 class="font-medium">Department</h1>
-                        <select name="progcolldeptid" id="progcolldeptid" class="border border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7]">
+                        <h1 class="font-medium text-[#09050F]">Department</h1>
+                        <select name="progcolldeptid" id="progcolldeptid" class="bg-white whitespace-nowrap text-ellipsis border border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7]">
+                            @foreach($departments as $item)
+                                <option class="hover:bg-purple-50 text-[#09050F]" value="{{ $item->deptid }}">
+                                    {{ $item->deptfullname }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
-                    <style>
-                        #departmentSelect {
-                            width: 435px;
-                            overflow: hidden;
-                            white-space: nowrap;
-                            text-overflow: ellipsis;
-                        }
-                    </style>
                 </div>
 
 
