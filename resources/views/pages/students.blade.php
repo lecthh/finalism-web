@@ -12,16 +12,14 @@
         </div>
 
         <div class="flex flex-row gap-x-6 items-center">
-            <button type="button" data-modal-target="add-college" data-modal-toggle="add-college" class="bg-[#9D59EF] gap-x-2 pr-4 pl-5 py-3 flex hover:bg-[#673EEF] transition ease-in-out delay-100">
-                <h1 class="text-white">Add College</h1>
+            <button type="button" data-modal-target="add-student" data-modal-toggle="add-student" class="bg-[#9D59EF] gap-x-2 pr-4 pl-5 py-3 flex hover:bg-[#673EEF] transition ease-in-out delay-100">
+                <h1 class="text-white">Add Student</h1>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <path d="M12 4L12 20" stroke="white" stroke-width="2"/>
                     <path d="M4 12L20 12" stroke="white" stroke-width="2"/>
                 </svg>
             </button>
         </div>
-
-        <li class="group" tabindex="0"></li>
 
         <div class="relative overflow-x-auto table-container">
             <table class="w-full text-sm text-left rtl:text-right text-white">
@@ -55,7 +53,8 @@
                 </thead>
                 <tbody>
                     @foreach($students as $item)
-
+                        @include('modals.student.edit_student', ['studentId' => $item->studid, 'studentFName' => $item->studfirstname, 'studentLName' => $item->studlastname, 'studentMI' => $item->studmidname, 'studentProgram' => $item->studprogid, 'studentCollege' => $item->studcollid, 'studentYear' => $item->studyear])
+                        @include('modals.student.delete_student', ['programId' => $item->progid, 'studentFName' => $item->studfirstname, 'studentLName' => $item->studlastname, 'studentMI' => $item->studmidname, 'studentProgram' => $item->studprogid, 'studentCollege' => $item->studcollid, 'studentYear' => $item->studyear])
                         <tr class="bg-white border-b hover:bg-purple-100 group/edit-delete">
                             <th scope="row" class="px-6 py-4 font-bold text-[#9D59EF] whitespace-nowrap">
                                 {{ $item->studid }}
@@ -70,32 +69,29 @@
                                 {{ $item->studmidname }}
                             </td>
                             <td class="px-5 py-4 text-black">
-                                {{ $item->studprogid }}
+                                {{ $item->program->progfullname }}
                             </td>
                             <td class="px-5 py-4 text-black">
-                                {{ $item->studcollid }}
+                                {{ $item->college->collfullname }}
                             </td>
                             <td class="px-5 py-4 text-black">
                                 {{ $item->studyear }}
                             </td>
                             <td class="px-5 py-4 text-black">
                                 <div class="group-hover/edit-delete:visible invisible flex gap-x-2">
-                                    <button class="bg-[#9D59EF] px-5 py-1 text-white edit-college-btn" data-modal-target="edit-college" data-modal-toggle="edit-college"data-college-id="{{ $item->collid }}"data-college-name="{{ $item->collfullname }}" data-college-abbreviation="{{ $item->collshortname }}">
+                                    <button class="bg-[#9D59EF] px-5 py-1 text-white edit-student-btn" data-modal-target="edit-student" data-modal-toggle="edit-student"data-student-id="{{ $item->studid }}"data-college-name="{{ $item->studcollid }}" data-program-name="{{ $item->studprogid }}">
                                         Edit
                                     </button>
-                                    <form action="{{ url('/colleges' . '/' . $item->collid) }}" method="POST">
+                                    <form action="{{ url('/students' . '/' . $item->studid) }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }} 
-                                        <button type="submit" class="bg-[#FF0B47] px-5 py-1 text-white" name="delete-college"  onclick="return confirm('Confirm Delete?')">
+                                        <button type="submit" class="bg-[#FF0B47] px-5 py-1 text-white" name="delete-student"  onclick="return confirm('Confirm Delete?')">
                                             Delete
                                         </button>
                                     </form> 
                                 </div>
                             </td>
                         </tr>
-                        <!-- edit modal-->
-                        @include('modals.edit_college')
-
                     @endforeach
                 </tbody>
             </table>

@@ -6,6 +6,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 use App\Models\Student;
+use App\Models\College;
+use App\Models\Program;
 
 class StudentController extends Controller
 {
@@ -15,7 +17,14 @@ class StudentController extends Controller
     public function index(): View
     {
         $students = Student::all();
-        return view('pages.students', ['students' => $students]);
+        $colleges = College::all();
+        $programs = Program::all();
+
+        return view('pages.students', [
+            'students' => $students,
+            'colleges' => $colleges,
+            'programs' => $programs
+        ]);
     }
 
 
@@ -32,7 +41,19 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'studfirstname' => 'required',
+            'studmidname' => 'required',
+            'studlastname' => 'required',
+            'studprogid' => 'required',
+            'studcollid' => 'required',
+            'studyear' => 'required',
+        ]);
+
+        $validatedData['studyear'] = (int) $validatedData['studyear'];
+
+        Student::create($validatedData);
+        return redirect('/students')->with('success', 'Student created successfully!');
     }
 
     /**

@@ -4,9 +4,11 @@
 use App\Http\Controllers\DeparmentController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CollegeController;
+use App\Http\Controllers\LoginController;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CollegeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +25,8 @@ Route::get('/', function () {
     return view('login');
 });
 
-Auth::routes();
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-Route::resource('colleges', CollegeController::class);
 Route::resource('departments', DeparmentController::class);
 Route::resource('programs', ProgramController::class);
 Route::resource('students', StudentController::class);

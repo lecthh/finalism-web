@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,23 +29,26 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="M345.241 52H334.861C325.076 52 320.182 52 317.143 48.9528C314.102 45.9082 314.102 41.0046 314.102 31.2V20.8C314.102 10.9954 314.102 6.0918 317.143 3.0472C320.182 -3.09944e-07 325.102 0 334.939 0C336.511 0 337.77 -1.06543e-07 338.831 0.0441999C338.798 0.2522 338.779 0.4628 338.779 0.6786L338.753 8.047C338.753 10.8992 338.753 13.4212 339.026 15.4518C339.322 17.654 339.999 19.8562 341.795 21.6554C343.585 23.4494 345.786 24.1306 347.984 24.427C350.01 24.7 352.527 24.7 355.374 24.7H365.888C366 26.0884 366 27.794 366 30.0638V31.2C366 41.0046 366 45.9082 362.959 48.9528C359.92 52 355.026 52 345.241 52ZM353.025 36.4C354.458 36.4 355.62 34.6528 355.62 32.5C355.62 30.3472 354.458 28.6 353.025 28.6C351.593 28.6 350.431 30.3472 350.431 32.5C350.431 34.6528 351.593 36.4 353.025 36.4ZM330.647 39.2184C330.933 38.7881 331.378 38.4894 331.885 38.388C332.391 38.2866 332.916 38.3908 333.346 38.6776C335.331 40.0041 337.664 40.712 340.051 40.712C342.437 40.712 344.771 40.0041 346.756 38.6776C347.186 38.3975 347.708 38.2984 348.21 38.4019C348.712 38.5054 349.153 38.803 349.437 39.2302C349.721 39.6574 349.826 40.1798 349.728 40.6838C349.631 41.1878 349.338 41.6329 348.915 41.9224C346.29 43.6759 343.206 44.6117 340.051 44.6117C336.896 44.6117 333.812 43.6759 331.187 41.9224C330.757 41.6355 330.459 41.1895 330.358 40.6824C330.257 40.1753 330.361 39.6487 330.647 39.2184ZM327.076 36.4C328.509 36.4 329.671 34.6528 329.671 32.5C329.671 30.3472 328.509 28.6 327.076 28.6C325.644 28.6 324.481 30.3472 324.481 32.5C324.481 34.6528 325.644 36.4 327.076 36.4Z" fill="white"/>
         </svg>     
         <div class="flex flex-col bg-white w-[500px] p-6 gap-6">
-            <p class="text-2xl text-[#1A0D2E] font-bold">Admin Login</p>
-            <ul class="flex flex-col gap-3">
-                <h1 class="font-medium text-[#09050F]">Username</h1>
-                <li>
-                    <input type="text" name="username" class="border w-full flex flex-grow border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7]" placeholder="Enter Username" required>
-                </li>
-            </ul>
-            <ul class="flex flex-col gap-3">
-                <h1 class="font-medium text-[#09050F]">Password</h1>
-                <li>
-                    <input type="password" name="password" class="border w-full flex flex-grow border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7]" placeholder="Enter Password" required>
-                </li>
-            </ul>
-            
-            <button type="submit" name="login" class=" bg-[#9D59EF] justify-center gap-x-2 pr-4 pl-5 py-3 flex hover:bg-[#673EEF] transition ease-in-out delay-100">
-                        <h1 class="text-white text-center text-base">Login</h1>
-            </button>
+            <form method="POST" action="{{ route('admin.login_handler') }}">
+                @csrf
+                <p class="text-2xl text-[#1A0D2E] font-bold">Admin Login</p>
+                <ul class="flex flex-col gap-3">
+                    <h1 class="font-medium text-[#09050F]">Username</h1>
+                    <li>
+                        <input type="text" name="username" class="border w-full flex flex-grow border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7]" placeholder="Enter Username" required>
+                    </li>
+                </ul>
+                <ul class="flex flex-col gap-3">
+                    <h1 class="font-medium text-[#09050F]">Password</h1>
+                    <li>
+                        <input type="password" name="password" class="border w-full flex flex-grow border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7]" placeholder="Enter Password" required>
+                    </li>
+                </ul>
+                
+                <button type="submit" name="login" class=" bg-[#9D59EF] justify-center gap-x-2 pr-4 pl-5 py-3 flex hover:bg-[#673EEF] transition ease-in-out delay-100">
+                            <h1 class="text-white text-center text-base">Login</h1>
+                </button>
+            </form>
         </div>
         
     </div>

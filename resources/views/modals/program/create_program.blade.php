@@ -20,7 +20,6 @@
                 <div class="flex gap-x-3">
                     <div class="flex flex-col flex-grow gap-y-3">
                         <h1 class="font-medium text-[#09050F]">College</h1>
-
                         <select name="progcollid" id="progcollid" class="bg-white whitespace-nowrap text-ellipsis border border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7] ">
                             @foreach($colleges as $item)
                                 <option value="{{ $item->collid }}" data-departments="{{ json_encode($item->departments) }}" >

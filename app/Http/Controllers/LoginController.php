@@ -3,26 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
+
+
 class LoginController extends Controller
 {
-    public function authenticate(Request $request): RedirectResponse
+    /**
+     * Display a listing of the resource.
+     */
+    public function showLoginForm()
     {
-        $credentials = $request->validate([
-            'username' => ['required'],
-            'password' => ['required'],
-        ]);
- 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
- 
+        // Your login form view logic here
+        return view('login');
+    }
+   
+    public function login(Request $request)
+    {
+        $credentials = $request->only('username', 'password');
+
+        if (auth()->attempt($credentials)) {
+            // Authentication passed...
             return redirect()->intended('/colleges');
         }
- 
-        return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
-        ])->onlyInput('username');
-    }
 
+        // Authentication failed...
+        return redirect()->route('login')->with('error', 'Invalid login credentials');
+    }
 }
+
