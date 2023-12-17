@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 use App\Models\Program;
+use App\Models\College;
 
 class ProgramController extends Controller
 {
@@ -16,7 +17,8 @@ class ProgramController extends Controller
     public function index(): View
     {
         $programs = Program::all();
-        return view('pages.programs', ['programs' => $programs]);
+        $colleges = College::all();
+        return view('pages.programs', ['programs' => $programs],['colleges' => $colleges]);
     }
 
     /**
@@ -24,7 +26,7 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

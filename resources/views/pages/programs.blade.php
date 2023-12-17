@@ -21,8 +21,6 @@
             </button>
         </div>
 
-        <li class="group" tabindex="0"></li>
-
         <div class="relative overflow-x-auto table-container">
             <table class="w-full text-sm text-left rtl:text-right text-white">
                 <thead class="text-xs text-white uppercase bg-[#9D59EF]">

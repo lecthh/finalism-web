@@ -7,7 +7,7 @@
             </div>
             
             <div class="flex flex-col gap-y-3">
-                <h1 class="font-medium">Program Name</h1>
+                <h1 class="font-medium ">Program Name</h1>
                 <ul class="flex gap-x-3">
                     <li>
                         <input type="text" name="progfullname" class="border flex flex-grow border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7]" placeholder="Bachelor of ..." required>
@@ -20,14 +20,15 @@
                 <div class="flex gap-x-3">
                     <div class="flex flex-col flex-grow gap-y-3">
                         <h1 class="font-medium">College</h1>
+
                         <select name="progcollid" id="progcollid" class="border border-[#9D59EF] focus:ring-[#9D59EF] px-4 py-3 text-[#CEACF7]">
-                        @foreach($programs as $item)
-                            <option value="{{ $item->progid }}">
-                                {{ $item->progcollid }}
-                            </option>
-                        @endforeach
+                            @foreach($colleges as $item)
+                                <option value="{{ $item->collid }}">
+                                    {{ $item->collfullname }}
+                                </option>
+                            @endforeach
                         </select>
-                    </div>
+                        </div>
                     <style>
                         #collegeSelect {
                             width: 435px;
