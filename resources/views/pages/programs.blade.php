@@ -67,10 +67,10 @@
                             </td>
                             <td class="px-5 py-4 text-black">
                                 <div class="group-hover/edit-delete:visible invisible flex gap-x-2">
-                                    <button class="bg-[#9D59EF] px-5 py-1 text-white edit-program-btn" data-modal-target="edit-program" data-modal-toggle="edit-program"data-program-id="{{ $item->collid }}">
+                                    <button class="bg-[#9D59EF] px-5 py-1 text-white edit-program-btn" data-modal-target="edit-program" data-modal-toggle="edit-program"data-program-id="{{ $item->progid }}">
                                         Edit
                                     </button>
-                                    <form action="{{ url('/program' . '/' . $item->collid) }}" method="POST">
+                                    <form action="{{ url('/program' . '/' . $item->progid) }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }} 
                                         <button type="submit" class="bg-[#FF0B47] px-5 py-1 text-white" name="delete-program"  onclick="return confirm('Confirm Delete?')">

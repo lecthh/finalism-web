@@ -5,6 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     @vite(['resources/css/app.css','resources/js/app.js'])
     <title>Schoolie</title>
 </head>

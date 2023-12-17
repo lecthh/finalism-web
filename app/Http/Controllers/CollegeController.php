@@ -47,8 +47,8 @@ class CollegeController extends Controller
      */
     public function show($id): View
     {
-        $college = College::find($id);
-        return view('colleges.show', ['college' => $college]);
+        $colleges = College::find($id);
+        return view('colleges.show', ['college' => $colleges]);
     }
 
     /**
@@ -56,8 +56,8 @@ class CollegeController extends Controller
      */
     public function edit(string $id)
     {
-        $college = College::find($id);
-        return view('colleges')->with('college', $college);
+        $colleges = College::find($id);
+        return view('/colleges')->with('college', $colleges);
     }
 
 
@@ -66,10 +66,10 @@ class CollegeController extends Controller
      */
     public function update(Request $request, string $id) : RedirectResponse
     {
-        $college = College::find($id);
+        $colleges = College::find($id);
         $input = $request->all();
-        $college->update($input);
-        return redirect('colleges')->with('success', 'College Updated!');  
+        $colleges->update($input);
+        return redirect('/colleges')->with('success', 'College Updated!');  
     }
 
     /**

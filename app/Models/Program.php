@@ -10,6 +10,7 @@ class Program extends Model
 {
     use HasFactory;
     protected $table = 'programs';
+    protected $primaryKey = 'progid';
     protected $fillable = [
         'progid', 'progfullname', 'progshortname', 'progcollid', 'progcolldeptid'
     ];

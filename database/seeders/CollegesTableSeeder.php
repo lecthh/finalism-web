@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +12,15 @@ class CollegesTableSeeder extends Seeder
      */
     public function run(): void
     {
+        // Disable foreign key checks
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+
+        // Truncate the colleges table
+        DB::table('colleges')->truncate();
+
+        // Enable foreign key checks
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+
         $colleges = [
             ['collid' => 1, 'collfullname' => 'School of Business and Management', 'collshortname' => 'SBM'],
             ['collid' => 2, 'collfullname' => 'School of Arts and Sciences', 'collshortname' => 'SAS'],
@@ -22,6 +30,9 @@ class CollegesTableSeeder extends Seeder
             ['collid' => 6, 'collfullname' => 'School of Allied Medical Sciences', 'collshortname' => 'SAMS'],
         ];
 
-        DB::table('colleges')->insert($colleges);
+        foreach ($colleges as $college) {
+            DB::table('colleges')->updateOrInsert(['collid' => $college['collid']], $college);
+        }
     }
 }
+//php artisan db:seed --class=CollegesTableSeeder

@@ -24,6 +24,12 @@
                         
                     <button type="submit" data-modal-target="add-college" data-modal-toggle="add-college" class="bg-[#9D59EF] gap-x-2 pr-4 pl-5 py-3 flex hover:bg-[#673EEF] transition ease-in-out delay-100">
                         <h1 class="text-white">Add College</h1>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 4L12 20" stroke="white" stroke-width="2"/>
                             <path d="M4 12L20 12" stroke="white" stroke-width="2"/>

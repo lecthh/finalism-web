@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('studfirstname', 50);
             $table->string('studlastname', 50);
             $table->string('studmidname', 50)->nullable();
-            $table->foreignId('studprogid')->constrained('programs', 'progid');
-            $table->foreignId('studcollid')->constrained('colleges', 'collid');
+            $table->foreignId('studprogid')->constrained('programs', 'progid')->onDelete('cascade');;
+            $table->foreignId('studcollid')->constrained('colleges', 'collid')->onDelete('cascade');;
             $table->integer('studyear');
             $table->timestamps();
         });

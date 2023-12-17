@@ -21,8 +21,6 @@
             </button>
         </div>
 
-        <li class="group" tabindex="0"></li>
-
         <div class="relative overflow-x-auto table-container">
             <table class="w-full text-sm text-left rtl:text-right text-white">
                 <thead class="text-xs text-white uppercase bg-[#9D59EF]">
@@ -43,7 +41,9 @@
                 </thead>
                 <tbody>
                     @foreach($colleges as $item)
-
+                         <!-- edit modal-->
+                    @include('modals.college.edit_college', ['collegeId' => $item->collid, 'collegeName' => $item->collfullname, 'collegeAbbr' => $item->collshortname])   
+                    @include('modals.college.delete_college', ['collegeId' => $item->collid, 'collegeName' => $item->collfullname, 'collegeAbbr' => $item->collshortname])   
                         <tr class="bg-white border-b hover:bg-purple-100 group/edit-delete">
                             <th scope="row" class="px-6 py-4 font-bold text-[#9D59EF] whitespace-nowrap">
                                 {{ $item->collid }}
@@ -56,25 +56,21 @@
                             </td>
                             <td class="px-5 py-4 text-black">
                                 <div class="group-hover/edit-delete:visible invisible flex gap-x-2">
-                                <button class="bg-[#9D59EF] px-5 py-1 text-white edit-college-btn" data-modal-target="edit-college" data-modal-toggle="edit-college" data-college-id="{{ $item->collid }}" data-college-name="{{ $item->collfullname }}" data-college-abbreviation="{{ $item->collshortname }}">
-                                    Edit
-                                </button>
-                                <form action="{{ url('/colleges' . '/' . $item->collid) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }} 
-                                    <button type="submit" class="bg-[#FF0B47] px-5 py-1 text-white delete-college-btn" data-modal-target="delete-college" data-modal-toggle="delete-college" data-college-id="{{ $item->collid }}" >
-                                            Delete
+                                    <button class="bg-[#9D59EF] px-5 py-1 text-white edit-college-btn" data-modal-target="edit-college-{{$item->collid}}" data-modal-toggle="edit-college-{{$item->collid}}">   
+                                        Edit
                                     </button>
-                                </form> 
+                                    <button type="submit" class="bg-[#FF0B47] px-5 py-1 text-white delete-college-btn" data-modal-target="delete-college-{{$item->collid}}" data-modal-toggle="delete-college-{{$item->collid}}" data-college-id="{{ $item->collid }}" >
+                                        Delete
+                                    </button>
                                 </div>
                             </td>
                         </tr>
-                        <!-- edit modal-->
-                        @include('modals.college.edit_college')
-
+                    
                     @endforeach
+                    
                 </tbody>
             </table>
         </div>
     </div>
+
 @endsection
