@@ -49,6 +49,8 @@
                 </thead>
                 <tbody>
                     @foreach($programs as $item)
+                    @include('modals.program.edit_program', ['programId' => $item->progid, 'programName' => $item->progfullname, 'programAbbr' => $item->progshortname, 'programCollege' => $item->progcollid, 'programDept' => $item->progcolldeptid])
+                    @include('modals.program.delete_program', ['programId' => $item->progid, 'programName' => $item->progfullname, 'programAbbr' => $item->progshortname, 'programCollege' => $item->progcollid, 'programDept' => $item->progcolldeptid])
                         <tr class="bg-white border-b hover:bg-purple-100 group/edit-delete">
                             <th scope="row" class="px-6 py-4 font-bold text-[#9D59EF] whitespace-nowrap">
                                 {{ $item->progid }}
@@ -67,22 +69,25 @@
                             </td>
                             <td class="px-5 py-4 text-black">
                                 <div class="group-hover/edit-delete:visible invisible flex gap-x-2">
-                                    <button class="bg-[#9D59EF] px-5 py-1 text-white edit-program-btn" data-modal-target="edit-program" data-modal-toggle="edit-program"data-program-id="{{ $item->progid }}">
+                                    <button class="bg-[#9D59EF] px-5 py-1 text-white edit-program-btn" data-modal-target="edit-program-{{$item->progid}}}" data-modal-toggle="edit-program-{{$item->progid}}">
                                         Edit
                                     </button>
-                                    <form action="{{ url('/program' . '/' . $item->progid) }}" method="POST">
+                                    <button type="submit" class="bg-[#FF0B47] px-5 py-1 text-white delete-program-btn" data-modal-target="delete-program-{{$item->progid}}" data-modal-toggle="delete-program-{{$item->progid}}" data-program-id="{{ $item->progid }}" >
+                                        Delete
+                                    </button>
+                                    <!-- <form action="{{ url('/program' . '/' . $item->progid) }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }} 
                                         <button type="submit" class="bg-[#FF0B47] px-5 py-1 text-white" name="delete-program"  onclick="return confirm('Confirm Delete?')">
                                             Delete
                                         </button>
-                                    </form> 
+                                    </form>  -->
                                 </div>
                             </td>
                         </tr>
                     <!-- edit modal-->
-                    @include('modals.program.edit_program')
-                    @include('modals.program.delete_program')
+                    <!-- @include('modals.program.edit_program')
+                    @include('modals.program.delete_program') -->
                     @endforeach
                 </tbody>
             </table>
