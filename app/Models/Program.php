@@ -15,13 +15,13 @@ class Program extends Model
         'progid', 'progfullname', 'progshortname', 'progcollid', 'progcolldeptid'
     ];
 
-    // public function colleges(): BelongsTo
-    // {
-    //     return $this->belongsTo(College::class);
-    // }
+    public function colleges(): BelongsTo
+    {
+        return $this->belongsTo(College::class, 'progcollid');
+    }
 
-    // public function departments(): BelongsTo
-    // {
-    //     return $this->belongsTo(College::class);
-    // }
+    public function departments(): BelongsTo
+    {
+        return $this->belongsTo(College::class, 'progcolldeptid');
+    }
 }

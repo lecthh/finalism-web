@@ -15,8 +15,13 @@ class Student extends Model
         'studid', 'studfirstname', 'studlastname', 'studmidname', 'studprogid', 'studcollid', 'studyear'
     ];
 
-    // public function college(): BelongsTo
-    // {
-    //     return $this->belongsTo(College::class, 'collid');
-    // }
+    public function college(): BelongsTo
+    {
+        return $this->belongsTo(College::class, 'studcollid');
+    }
+
+    public function program(): BelongsTo
+    {
+        return $this->belongsTo(Program::class, 'studprogid');
+    }
 }

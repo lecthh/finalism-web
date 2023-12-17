@@ -16,13 +16,13 @@ class Department extends Model
         'deptid', 'deptfullname', 'deptshortname', 'deptcollid'
     ];
     
-    // public function college(): BelongsTo
-    // {
-    //     return $this->belongsTo(College::class);
-    // }
+    public function college(): BelongsTo
+    {
+        return $this->belongsTo(College::class, 'deptcollid');
+    }
 
-    // public function program(): HasMany
-    // {
-    //     return $this->hasMany(Program::class);
-    // }
+    public function program(): HasMany
+    {
+        return $this->hasMany(Program::class, 'progcolldeptid');
+    }
 }

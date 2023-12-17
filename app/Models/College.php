@@ -17,13 +17,18 @@ class College extends Model
         'collshortname',
     ];
 
-    // public function programs(): HasMany
-    // {
-    //     return $this->hasMany(Program::class);
-    // }
+    public function departments(): HasMany
+    {
+        return $this->hasMany(Department::class, 'deptcollid');
+    }
 
-    // public function departments(): HasMany
-    // {
-    //     return $this->hasMany(Department::class);
-    // }
+    public function programs(): HasMany
+    {
+        return $this->hasMany(Program::class, 'progcollid');
+    }
+
+    public function students(): HasMany
+    {
+        return $this->hasMany(Student::class, 'studcollid');
+    }
 }
