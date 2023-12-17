@@ -18,7 +18,7 @@
             <p>Are you sure you want to delete department?</p>
 
             <div class="mt-[50px] flex gap-x-3">
-            <button type="button" data-modal-target="delete-department-{{$departmentId}}" data-modal-toggle="delete-department-{{$departmentmId}}" class="bg-[#FF0B47] gap-x-2 px-4 py-3 hover:bg-[#B90934] transition ease-in-out delay-100">
+            <button type="button" data-modal-target="delete-department-{{$departmentId}}" data-modal-toggle="delete-department-{{$departmentId}}" class="bg-[#FF0B47] gap-x-2 px-4 py-3 hover:bg-[#B90934] transition ease-in-out delay-100">
                 <h1 class="text-white">Cancel</h1>
             </button>
             <button type="submit" data-modal-target="delete-department-{{$departmentId}}" data-modal-toggle="delete-department-{{$departmentId}}" class="bg-[#CFCED0] gap-x-2 px-4 py-3 hover:bg-[#767676] transition ease-in-out delay-100">
