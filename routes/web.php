@@ -1,13 +1,17 @@
 <?php
 
 
-use App\Http\Controllers\DeparmentController;
+use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CollegeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DepartmentController;
+
 use App\Models\Department;
-use Illuminate\Support\Facades\Route;
+
 
 
 /*
@@ -20,14 +24,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('login');
 });
 
-Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-Route::resource('departments', DeparmentController::class);
-Route::resource('programs', ProgramController::class);
-Route::resource('students', StudentController::class);
-
+Route::group(['middleware'=>'admin'],function(){
+    Route::resource('colleges', CollegeController::class);
+    Route::resource('departments', DepartmentController::class);
+    Route::resource('programs', ProgramController::class);
+    Route::resource('students', StudentController::class);
+});
